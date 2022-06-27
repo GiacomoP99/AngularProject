@@ -1,39 +1,32 @@
 <div>
-    <h2 class="bg-primary text-white p-3">Giacomo's ToDo List </h2>
-    <div class="m-1">
-        <input class="form-control">
-        <button class="btn btn-primary mt-1">Add new activity</button>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Description</th>
-                    <th>Done</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>1</th>
-                    <th>Lunch break</th>
-                    <th>true</th>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <th>Afternoon break</th>
-                    <th>false</th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th>Quick Revision</th>
-                    <th>true</th>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <th>Publish online the project</th>
-                    <th>false</th>
-                </tr>
-            </tbody>
-        </table>
-
+    <h2 class="bg-dark text-white p-3">{{repository.user}}'s ToDo List, total activity : {{repository.items.length}}
+    </h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <table class="table table-bordered table-hover text-white table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Description</th>
+                            <th>Done</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of repository.items">
+                            <th>{{item.id}}</th>
+                            <th>{{item.description }}</th>
+                            <th>{{item.done ? "Yes" : "No"}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 ">
+                <label>New Activity: </label>
+                <input type="text" class="form-control bg-secondary text-light" #newActivity>
+                <button class="btn btn-warning mt-1 mb-2 " (click)="addActivity(newActivity)">Add new
+                    activity</button>
+            </div>
+        </div>
     </div>
 </div>
