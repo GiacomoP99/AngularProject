@@ -1,0 +1,46 @@
+<div>
+    <h2 class="bg-dark text-white p-3">Student list, total Students : {{repository.Students.length}}
+    </h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <table class="table table-bordered table-hover text-white table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Degree</th>
+                            <th>Hired</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let student of repository.Students">
+                            <th>{{student.id}}</th>
+                            <th>{{student.name}}</th>
+                            <th>{{student.surname}}</th>
+                            <th>{{student.degree}}</th>
+                            <th>{{student.hired ? "Yes" : "No"}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 ">
+                <label>Name: </label>
+                <input type="text" class="form-control bg-secondary text-light" #newName>
+                <label>Surname: </label>
+                <input type="text" class="form-control bg-secondary text-light" #newSurname>
+                <label>Degree: </label>
+                <input type="text" class="form-control bg-secondary text-light" #newDegree>
+
+                <div class="form-check-inline">
+                    <label>Hired : </label>
+                    <input class="form-check-input p-2 ml-3" type="checkbox" value="true" id="hired" #newHired>
+                </div>
+                <button class="btn btn-warning mb-2 d-block"
+                    (click)="addStudent(newName,newSurname,newDegree,newHired)">Add new
+                    Student</button>
+            </div>
+        </div>
+    </div>
+</div>
