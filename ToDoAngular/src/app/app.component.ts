@@ -9,6 +9,7 @@ import { TodoItem } from './model/todo-item';
 })
 export class AppComponent {
   repository: StaticRepository;
+  showAll = false;
 
   constructor() {
     this.repository = new StaticRepository();
@@ -21,5 +22,13 @@ export class AppComponent {
       );
     }
     elem.value = '';
+  }
+
+  getActivity(): TodoItem[] {
+    if (this.showAll) {
+      return this.repository.items;
+    } else {
+      return this.repository.items.filter((item) => !item.done);
+    }
   }
 }

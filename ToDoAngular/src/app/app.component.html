@@ -1,22 +1,37 @@
 <div>
-    <h2 class="bg-dark text-white p-3">{{repository.user}}'s ToDo List, total activity : {{repository.items.length}}
+    <h2 class="bg-dark text-white p-3">{{repository.user}}'s ToDo List, total {{showAll ? "": "undone "}}activity :
+        {{getActivity().length}}
     </h2>
     <div class="container-fluid">
         <div class="row">
             <div class="col-8">
+                <div class="row">
+                    <div class=" d-inline-block custom-control custom-switch mb-1 mx-auto">
+                        <input type="checkbox" class="custom-control-input" id="showAll" [(ngModel)]="showAll">
+                        <label class="custom-control-label" for="showAll">Show all Activities</label>
+                    </div>
+                </div>
                 <table class="table table-bordered table-hover text-white table-dark table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Description</th>
                             <th>Done</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of repository.items">
-                            <th>{{item.id}}</th>
-                            <th>{{item.description }}</th>
-                            <th>{{item.done ? "Yes" : "No"}}</th>
+                        <tr *ngFor="let item of getActivity()">
+                            <td>{{item.id}}</td>
+                            <td>{{item.description }}</td>
+                            <td>{{item.done ? "Yes" : "No"}}</td>
+                            <td>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="{{item.id}}"
+                                        [(ngModel)]="item.done">
+                                    <label class="custom-control-label" for="{{item.id}}"></label>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
