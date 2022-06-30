@@ -1,0 +1,15 @@
+<div class="float-right">
+    <small>
+        <span *ngIf="totalProducts > 0">
+            Products: {{totalProducts}}
+            Total: {{totalPrice | currency : 'EUR'}}
+        </span>
+        <span *ngIf="totalProducts == 0">
+            Cart: (empty)
+        </span>
+    </small>
+    <button class="btn btn-sm bg-dark text-white" routerLink="/cart-details" [disabled]="totalProducts == 0"><i
+            class="fa fa-shopping-cart"></i></button>
+    <button class="btn btn-sm bg-dark text-white" (click)="emptyCart()" [disabled]="totalProducts == 0"><i
+            class="fa fa-trash"></i></button>
+</div>

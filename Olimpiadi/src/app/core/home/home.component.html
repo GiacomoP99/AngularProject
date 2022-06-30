@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row bg-dark text-white p-1">
+        <div class="col-3">
+            <img src="../../../assets/logo.png" style="width: 30%;" class="img-fluid max-width img-thumbnail "
+                alt="Logo">
+        </div>
+        <div class="col-9 text-center">
+            <a class="navbar-brand" href="index.jsp"> My Olimpiadi </a>
+        </div>
+    </div>
+    <div class="row">
+        <a class="btn btn-sm btn-outline-primary">Tutte le nazioni</a>
+        <a *ngFor="let nazione of getNazioni()" class="btn btn-sm btn-outline-primary">{{nazione}}</a>
+        <ciccia></ciccia>
+    </div>
+
+    <div class="row">
+        <div class="col-3 p-2">
+            <button class="btn btn-block btn-sm btn-outline-success">Tutti gli sport</button>
+            <button *ngFor="let sport of getSports()"
+                class="btn btn-block btn-sm btn-outline-success">{{sport}}</button>
+        </div>
+        <div class="col-8">
+            <div class="row ">
+                <div *ngFor="let atleta of getAtleti()" class="col-12 col-sm-6 col-lg-4 p-2">
+                    <div class="card h-100 p-1 bg-light">
+                        <img class="rounded-top" src="../../../assets/{{atleta.nome}}.jpg" alt="{{atleta.cognome}}">
+                        <h4 class="rounded-bottom badge-primary float-right">{{atleta.nome}} {{atleta.cognome}}
+                        </h4>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-8 card-text  bg-white p-1 text-black-50 float-left ">
+                                    {{atleta.descrizione}}
+                                </div>
+                                <button *ngIf="!selezionato(atleta)" class="col-4 btn btn-success float-right "
+                                    (click)="aggiungi(atleta)">Seleziona</button>
+                                <button *ngIf="selezionato(atleta)" class="col-4 btn btn-success float-right "
+                                    (click)="elimina(atleta)">Deseleziona</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="float-right">
+    <small>
+        Atleti selezionati:
+        <span *ngIf="totale>0">
+            numero: {{totale}}
+            maschi: {{totaleMaschi}}
+            femmine: {{totaleFemmine}}
+
+        </span>
+        <span *ngIf="totale==0">
+            (vuoto)
+        </span>
+    </small>
+    <button class="btn btn-sm btn-primary" [disabled]="totale==0"><i class="fa fa-shopping-basket "></i></button>
+</div>

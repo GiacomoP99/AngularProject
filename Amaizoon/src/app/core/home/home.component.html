@@ -1,12 +1,14 @@
 <div class="container-fluid ">
     <header class="row mb-2">
         <div class="col-3"><img id="logo" src="../../../assets/logo.png" alt="Logo"></div>
-        <div class="col-9 text-right"><a class="navbar-brand" href="index.html">Amaizoon</a></div>
+        <div class="col-9 text-right"><a class="navbar-brand" routerLink="/home"><img class="w-100" id="logo"
+                    src="../../../assets/amaizoon.png" alt="amaizoon"></a></div>
     </header>
 </div>
 <div class="border-light border-top border-bottom p-1">
     <a class="btn btn-sm btn-outline-primary ml-1">Login</a>
     <a class="btn btn-sm btn-outline-primary ml-1">Register</a>
+    <app-cart-section></app-cart-section>
 </div>
 <div class="container-fluid">
     <div class="row">
@@ -26,19 +28,20 @@
         <div class="col-9 ">
             <div class="row">
                 <div *ngFor="let prod of getProducts()" class="col-12 col-lg-6 mt-3">
-                    <div class="card m-1 p-1 bg-light ">
+                    <div class="card m-1 p-1 bg-info border-light ">
                         <h4 class="text-dark">{{prod.name}}
-                            <span class="badge badge-pill badge-primary float-right">
+                            <span class="badge badge-pill badge-light float-right">
                                 {{prod.price}}€
                             </span>
                         </h4>
                         <div class="card-body p-0">
-                            <div class="card-text bg-light  text-black-50 ">{{prod.description}}</div>
+                            <div class="card-text rounded text-black-50 ">{{prod.description}}</div>
                             <h5>
-                                <span class="badge badge-pill badge-info mt-2">
+                                <span class="badge badge-pill badge-light mt-2">
                                     {{prod.category}}
                                 </span>
-                                <button class="btn btn-success float-right">+Add to cart</button>
+                                <button class="btn btn-warning float-right" (click)="addToCart(prod)">+Add to
+                                    cart</button>
                             </h5>
 
                         </div>
