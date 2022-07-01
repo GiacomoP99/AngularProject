@@ -7,12 +7,13 @@ export class ProductRepositoryService {
   private products: Product[] = [];
   private categories: (string | undefined)[] = [];
   constructor(private datasource: RestDatasourceService) {
-    this.products = datasource.getProducts();
-    this.categories = datasource
-      .getProducts()
-      .map((p) => p.category)
-      .filter((c) => c != undefined)
-      .filter((v, i, a) => a.indexOf(v) === i);
+    datasource.getProducts().subscribe((data) => {
+      this.products = data;
+      this.categories = data
+        .map((p) => p.category)
+        .filter((c) => c != undefined)
+        .filter((v, i, a) => a.indexOf(v) === i);
+    });
   }
 
   getProducts(selectedCategory: string | undefined): Product[] {

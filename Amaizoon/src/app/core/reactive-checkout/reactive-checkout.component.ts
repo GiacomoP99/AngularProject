@@ -10,6 +10,7 @@ import { OrderService } from 'src/app/model/order.service';
 })
 export class ReactiveCheckoutComponent implements OnInit {
   orderForm: FormGroup;
+  orderId: number = 0;
   constructor(
     public order: OrderService,
     private repo: OrderRepositoryService
@@ -51,9 +52,11 @@ export class ReactiveCheckoutComponent implements OnInit {
 
   sendOrder() {
     if (this.orderForm.valid) {
-      this.repo.saveOrder(this.order);
-      this.order.clear();
-      this.sent = true;
+      this.repo.saveOrder(this.order).subscribe((data) => {
+        this.orderId = data.id;
+        this.order.clear();
+        this.sent = true;
+      });
     }
   }
 }
