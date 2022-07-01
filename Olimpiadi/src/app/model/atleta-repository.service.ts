@@ -1,28 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Atleta } from './atleta';
-import { StaticDatasourceService } from './static-datasource.service';
+import { Atleta } from './Atleta';
+import { RepositoryService } from './repository.service';
 
 @Injectable()
 export class AtletaRepositoryService {
-  private atleti : Atleta[]=[];
-  private sports : string[]=[];
-  private nazioni : string[]=[];
-  constructor(private datasource : StaticDatasourceService) {
-    this.atleti=datasource.getAtleti();
-    this.sports=datasource.getAtleti().map(a => a.sport).filter((w,i,a) => a.indexOf(w)===i);
-    this.nazioni=datasource.getAtleti().map(a => a.nazione).filter((w,i,a) => a.indexOf(w)===i);
-   }
 
-   getAtleti(): Atleta[]{
-    return this.atleti;
-   }
+  constructor(private repo:RepositoryService) { }
 
-   getSports() :string[]{
-    return this.sports;
-   }
+  getAllAtleti(nazione:string, mostratutti:boolean):Atleta[]{
+      if(nazione == "" && mostratutti){
+        return this.repo.getAtleti();
+      }else if(nazione == "" && !mostratutti){
+        return this.repo.getAtleti().filter(atleta => !atleta.selezionato);
+      }else if(mostratutti && nazione != ""){
+        return this.repo.getAtleti().filter(atleta => atleta.nazione == nazione);
+      }else{
+        return this.repo.getAtleti().filter(atleta => !atleta.selezionato || atleta.nazione == nazione);
+      }
+      
+    }
 
-   getNazioni() :string[]{
-    return this.nazioni;
-   }
+  getCategorie():string[]{
+    return this.repo.getAtleti()
+                .map(atleta => atleta.categoria)
+                .filter((value,index,atleti) => atleti.indexOf(value) == index);
+  }
+
+  getNazioni():string[]{
+    return this.repo.getAtleti()
+                .map(atleta => atleta.nazione)
+                .filter((value,index,atleti) => atleti.indexOf(value) == index);
+  }
 
 }

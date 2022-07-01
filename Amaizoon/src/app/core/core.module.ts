@@ -6,6 +6,8 @@ import { CartSectionComponent } from './cart-section/cart-section.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveCheckoutComponent } from './reactive-checkout/reactive-checkout.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +15,15 @@ import { RouterModule } from '@angular/router';
     CartSectionComponent,
     CartDetailsComponent,
     CheckoutComponent,
+    ReactiveCheckoutComponent,
   ],
-  imports: [CommonModule, ModelModule, RouterModule],
+  imports: [
+    CommonModule,
+    ModelModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [HomeComponent],
 })
 export class CoreModule {}

@@ -6,42 +6,56 @@
     </header>
 </div>
 <div class="border-light border-top border-bottom p-1">
-    <a class="btn btn-sm btn-outline-primary ml-1">Login</a>
+    <a class="btn btn-sm btn-outline-primary ml-1" routerLink="/administration">Login</a>
     <a class="btn btn-sm btn-outline-primary ml-1">Register</a>
 </div>
 <div class="row">
     <div class="col-8 mx-auto">
-        <table class="table table-bordered table-hover text-white table-dark table-striped mt-3"
-            *ngIf="totalProducts!= 0">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let prod of products">
-                    <td>{{prod.product.name}}</td>
-                    <td>{{prod.product.price}}</td>
-                    <td>{{prod.quantity}}</td>
-                    <td><button (click)="removeOne(prod.product.id)" class="btn btn-danger btn-sm">remove
-                            one</button>
-                    </td>
-                </tr>
-                <tr class="text-right ">
-                    <td colspan="2">Total items : {{totalProducts}}</td>
-                    <td colspan="2">Total cost : {{totalPrice | currency : 'EUR'}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <span *ngIf="totalProducts!= 0">
+            <table class="table table-bordered table-hover text-white table-dark table-striped mt-3">
+                <thead>
+                    <tr class="text-center">
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of products" class="text-center">
+                        <td>{{prod.product.name}}</td>
+                        <td>{{prod.product.price | currency : 'EUR'}}</td>
+                        <td><input class="form-control w-auto" type="number" [value]="prod.quantity"
+                                (input)="updateQuantity(prod.product.id,+quantity.value)" #quantity></td>
+                        <td>{{prod.product.price * prod.quantity| currency : 'EUR'}}</td>
+                        <!-- <td><button (click)="removeOne(prod.product.id)" class="btn btn-danger mr-2 btn-sm">remove
+                                one</button> -->
+                        <td>
+                            <button (click)="remove(prod.product.id)" class="btn btn-danger btn-sm">remove
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="text-right">
+                        <td colspan="2">Total items : {{totalProducts}}</td>
+                        <td colspan="3">Total cost : {{totalPrice | currency : 'EUR'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button class="btn btn-sm bg-warning p-2 ml-2 text-white" routerLink="/checkout">Checkout</button>
+                <button class="btn btn-sm bg-warning p-2 ml-2 text-white" routerLink="/home">Continue shopping</button>
+            </div>
+        </span>
         <h3 class="text-center rounded border-warning border text-dark bg-secondary mt-5 p-3"
             *ngIf="totalProducts == 0">
-            No
-            products added
-            to
-            cart
-            yet</h3>
+            <a routerLink="/home" class="text-light">
+                No
+                products added
+                to
+                cart
+                yet click to go back shopping</a>
+        </h3>
     </div>
 </div>

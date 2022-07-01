@@ -22,8 +22,15 @@ export class CartDetailsComponent implements OnInit {
     return this.cart.totalProducts;
   }
 
-  removeOne(id: number) {
-    this.cart.removeOne(id);
+  // removeOne(id: number) {
+  //   this.cart.removeOne(id);
+  // }
+
+  updateQuantity(id: number, quantity: number) {
+    this.cart.updateQuantity(id, quantity);
+  }
+  remove(id: number) {
+    this.cart.remove(id);
   }
   ngOnInit(): void {}
 }

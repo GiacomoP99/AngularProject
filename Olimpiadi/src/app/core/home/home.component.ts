@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Atleta } from 'src/app/model/atleta';
+import { Atleta } from 'src/app/model/Atleta';
 import { AtletaRepositoryService } from 'src/app/model/atleta-repository.service';
-import { AtletiSelezionatiService } from 'src/app/model/atleti-selezionati.service';
+import { OlimpioniciService } from 'src/app/model/olimpionici-service';
 
 @Component({
   selector: 'app-home',
@@ -10,33 +10,60 @@ import { AtletiSelezionatiService } from 'src/app/model/atleti-selezionati.servi
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private atletiRepository: AtletaRepositoryService, private atletiSelezionati: AtletiSelezionatiService) { }
+  constructor(private atletaService: AtletaRepositoryService, private olimpioniciService:OlimpioniciService) { }
 
-  getAtleti(): Atleta[] {
-    return this.atletiRepository.getAtleti();
+  nazioneSelezionata:string = "";
+  mostraTutti:boolean = false;
+
+  getAtleti(): Atleta[]{
+    return this.atletaService.getAllAtleti(this.nazioneSelezionata,!this.mostraTutti);
   }
 
-  getSports(): string[] {
-    return this.atletiRepository.getSports();
+  getCategorie(): string[]{
+    return this.atletaService.getCategorie();
   }
 
-  getNazioni(): string[] {
-    return this.atletiRepository.getNazioni();
+  getNazioni(): string[]{
+    return this.atletaService.getNazioni();
   }
 
-  aggiungi(atleta: Atleta) {
-    this.atletiSelezionati.aggiungi(atleta);
+  seleziona(atleta:Atleta){
+    atleta.selezionato = true;
+    this.olimpioniciService.aggiungi(atleta);
   }
 
-  elimina(atleta: Atleta) {
-    this.atletiSelezionati.elimina(atleta);
+  deseleziona(atleta:Atleta){
+    atleta.selezionato = false;
+    this.olimpioniciService.rimuovi(atleta);
   }
 
-  selezionato(atleta: Atleta): boolean {
-    return this.atletiSelezionati.selezionato(atleta);
+  get quantitaSelezionati(){
+    return this.olimpioniciService.getQuantita();
+  }
+
+  setMostraTutti(checkMostraTutti: HTMLInputElement){
+    if(checkMostraTutti.checked){
+      this.mostraTutti = false;
+    }else{
+      this.mostraTutti = true;
+    }
   }
 
 
+  getFoto(nome:string):string{
+    switch(nome){
+      case "Federica Pellegrini":
+        return "Pellegrini.png";
+      case "Usain Bolt":
+        return "Bolt.jpg";
+      case "Iuri Chechi":
+        return "Chechi.webp";
+      case "Carl Lewis":
+        return "Lewis.jpg";
+      default:
+        return "";
+    }
+  }
 
   ngOnInit(): void {
   }

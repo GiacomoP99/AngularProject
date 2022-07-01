@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StaticDatasourceService } from './static-datasource.service';
+import { RepositoryService } from './repository.service';
 import { AtletaRepositoryService } from './atleta-repository.service';
-import { AtletiSelezionatiService } from './atleti-selezionati.service';
-
-
+import { OlimpioniciService } from './olimpionici-service';
+import { SelezionatoreService } from './selezionatore.service';
+import { LelezionatoreRepositoryService } from './lelezionatore-repository.service';
 
 @NgModule({
   declarations: [],
+  imports: [CommonModule],
   providers: [
-    StaticDatasourceService,
+    RepositoryService,
     AtletaRepositoryService,
-    AtletiSelezionatiService
+    OlimpioniciService,
+    SelezionatoreService,
+    LelezionatoreRepositoryService,
   ],
-  imports: [
-    CommonModule
-  ]
 })
-export class ModelModule { }
+export class ModelModule {}

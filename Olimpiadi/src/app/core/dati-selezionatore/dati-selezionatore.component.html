@@ -1,0 +1,47 @@
+<div class="row" *ngIf="sent">
+    <div class="col-8 mx-auto">
+        <h3 class="text-center rounded border-warning border text-dark bg-secondary mt-5 p-3">
+            <a routerLink="/home" class="text-light">
+                Thanks {{selezionatore.name | uppercase}}! Order sent with success! Click here to go back shopping</a>
+        </h3>
+    </div>
+</div>
+
+
+<div class="row" *ngIf="!sent">
+    <div class="col-12 d-block">
+        {{selezionatore | json}}
+    </div>
+    <div class="col-4 mx-auto">
+        <form #formSelezionatore="ngForm" (ngSubmit)="sendOrder(formSelezionatore)">
+            <label>Name: </label>
+            <input class="form-control" #nameRef="ngModel" type="text" name="name" [(ngModel)]="selezionatore.name"
+                minlength="2" required>
+            <ul class="text-danger" *ngIf="nameRef.dirty && nameRef.invalid">
+                <li *ngIf="nameRef.errors?.['required']">
+                    Name is mandatory
+                </li>
+                <li *ngIf="nameRef.errors?.['minlength']">
+                    Name must be at least 2 characters
+                </li>
+            </ul>
+            <label>Surname: </label>
+            <input class="form-control" #surnamemeRef="ngModel" type="text" name="surname"
+                [(ngModel)]="selezionatore.surname" minlength="2" required>
+            <label>City: </label>
+            <input class="form-control" #cityRef="ngModel" type="text" name="city" [(ngModel)]="selezionatore.city"
+                minlength="2" required>
+            <label>Address: </label>
+            <input class="form-control" #addressRef="ngModel" type="text" name="address"
+                [(ngModel)]="selezionatore.address" minlength="2" required>
+            <div class="row">
+                <div class="text-left col-6">
+                    <button class="btn  btn-success mt-3" routerLink="/cart-details">Back to cart</button>
+                </div>
+                <div class="text-right col-6">
+                    <button class="btn  btn-success mt-3">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

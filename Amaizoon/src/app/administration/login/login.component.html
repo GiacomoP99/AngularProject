@@ -1,0 +1,41 @@
+<div class="container-fluid ">
+    <header class="row mb-2 border-bottom border-light">
+        <div class="col-3"><img id="logo" src="../../../assets/logo.png" alt="Logo"></div>
+        <div class="col-9 text-right "><a class="navbar-brand" routerLink="/home"><img class="w-100" id="logo"
+                    src="../../../assets/amaizoon.png" alt="amaizoon"></a></div>
+    </header>
+
+
+
+
+
+    <div class="row" *ngIf="!authenticated">
+        <div class="col-4 mx-auto border border-warning bg-secondary rounded p-2">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <h3 class="text-center">Login</h3>
+
+                <div *ngIf="error" class="text-center text-warning  ">
+                    {{error}}
+                </div>
+
+                <label>Name: </label>
+                <input class="form-control" formControlName="username" type="text">
+                <ul class="text-danger" *ngIf="username?.dirty && username?.invalid">
+                    <li *ngIf="username?.errors?.['required']">
+                        username is mandatory
+                    </li>
+                    <li *ngIf="username?.errors?.['minlength']">
+                        username must be at least 2 characters
+                    </li>
+                </ul>
+                <label>Password: </label>
+                <input class="form-control" formControlName="password" type="password">
+
+                <div class="text-right ">
+                    <button class="btn  btn-success mt-3" type="submit">Send</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

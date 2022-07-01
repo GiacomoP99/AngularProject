@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { OrderService } from './order.service';
 import { Product } from './product';
 
 @Injectable()
@@ -52,5 +53,8 @@ export class StaticDatasourceService {
     return this.products;
   }
 
+  saveOrder(order: OrderService) {
+    console.log(JSON.stringify(order));
+  }
   constructor() {}
 }

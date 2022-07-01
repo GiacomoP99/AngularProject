@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
-import { StaticDatasourceService } from './static-datasource.service';
+import { RestDatasourceService } from './rest-datasource.service';
 
 @Injectable()
 export class ProductRepositoryService {
   private products: Product[] = [];
   private categories: (string | undefined)[] = [];
-  constructor(private datasource: StaticDatasourceService) {
+  constructor(private datasource: RestDatasourceService) {
     this.products = datasource.getProducts();
     this.categories = datasource
       .getProducts()

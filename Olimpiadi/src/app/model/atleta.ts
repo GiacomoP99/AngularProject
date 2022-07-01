@@ -1,8 +1,9 @@
-export class Atleta {
-
-    constructor(public id: number, public nome: string, public cognome: string, public nazione: string, public sport: string,
-        public eta: number, public sesso: string,
-        public descrizione: string) { }
-
-
+export interface Atleta{
+    id?: number,
+    nome:string,
+    categoria:string,
+    nazione: string,
+    descrizione:string,
+    sesso?:string,
+    selezionato?:boolean
 }
