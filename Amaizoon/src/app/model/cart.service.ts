@@ -14,6 +14,10 @@ export class CartService {
     this.ricalcola();
   }
 
+  setValues(cartData: CartService) {
+    this.cart = this.getProducts(cartData);
+  }
+
   add(p: Product) {
     let item = this.cart.find((prod) => prod.product.id == p.id);
     if (item == undefined) {
@@ -25,18 +29,6 @@ export class CartService {
     this.ricalcola();
   }
 
-  // removeOne(id: number) {
-  //   let item = this.cart.find((prod) => prod.product.id == id);
-  //   if (item) {
-  //     if (item.quantity == 1) {
-  //       this.cart.splice(this.cart.indexOf(item), 1);
-  //     } else {
-  //       item.quantity -= 1;
-  //     }
-  //   }
-  //   this.ricalcola();
-  // }
-
   remove(id: number) {
     let item = this.cart.find((prod) => prod.product.id == id);
     if (item) {
@@ -47,6 +39,10 @@ export class CartService {
 
   get products(): CartProduct[] {
     return this.cart;
+  }
+
+  getProducts(cart: CartService): CartProduct[] {
+    return cart.cart;
   }
 
   ricalcola() {

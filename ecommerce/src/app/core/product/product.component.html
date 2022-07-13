@@ -1,0 +1,18 @@
+<div class="card m-4 h-100 text-dark bg-secondary p-2" id="card">
+    <div class="text-center">
+        <img src="{{product.image}}" class="w-50 m-2 border border-dark rounded-lg">
+    </div>
+    <div class="mb-2">
+        <h6 class="d-inline">{{product.name}}</h6>
+        <span class="badge badge-pill badge-light float-right">{{product.price}}€</span>
+    </div>
+
+    <button class="btn btn-primary">view details</button>
+    <div class="p-2 text-center">
+        {{product.description}}
+    </div>
+    <div class="text-center">
+        <button class="btn btn-success mr-2 m-1" (click)="itembought()">Buy</button>
+    </div>
+
+</div>

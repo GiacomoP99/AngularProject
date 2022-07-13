@@ -10,4 +10,12 @@ export class OrderRepositoryService {
   saveOrder(order: OrderService): Observable<OrderService> {
     return this.datasource.saveOrder(order);
   }
+
+  getOrders(): Observable<OrderService[]> {
+    return this.datasource.getOrders();
+  }
+
+  removeOrder(id: number): Observable<Object> {
+    return this.datasource.removeOrder(id);
+  }
 }

@@ -1,0 +1,36 @@
+<div class="row">
+    <form #form="ngForm" (ngSubmit)="send(form)">
+        <div class="row">
+            <div class="col">
+                <label class="inline">Category:</label>
+                <select class="form-control" [(ngModel)]="IdC" name="category">
+                    <option value="0">All Categories</option>
+                    <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.category}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label class="inline">Min:</label>
+                <input class="form-control" placeholder="€" type="number" name="minPrice">
+            </div>
+            <div class="col-6">
+                <label class="inline">Max:</label>
+                <input class="form-control" placeholder="€" type="number" name="maxPrice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <button class="btn btn-success mt-2" type="submit">Filter</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row mt-2">
+    <div class="col-10 p-0">
+        Category
+    </div>
+    <div class="col-2">
+        (#)
+    </div>
+</div>

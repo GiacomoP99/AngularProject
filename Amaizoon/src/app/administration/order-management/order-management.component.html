@@ -1,1 +1,43 @@
-<p>order-management works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <span *ngIf="getOrders().length">
+                <table class="table table-bordered table-hover text-white table-dark table-striped mt-3">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>City</th>
+                            <th>Address</th>
+                            <th>Cart</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders" class="text-center">
+                            <td>{{order.id}}</td>
+                            <td>{{order.name}}</td>
+                            <td>{{order.surname}}</td>
+                            <td>{{order.city}}</td>
+                            <td>{{order.address}}</td>
+                            <td>
+                                <span #spanCarrello style="display:none">
+                                    <ul *ngFor="let item of setCart(order.cart).products">
+                                        <li>{{item.product.name}} x{{item.quantity}}</li>
+                                    </ul>
+                                </span>
+                            </td>
+                            <td>
+                                <button (click)="removeOrder(order.id)" class="btn btn-danger btn-sm">remove
+                                </button>
+                                <button (click)="show(spanCarrello)" class=" btn btn-warning btn-sm m-2">show products
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
+        </div>
+    </div>
+</div>

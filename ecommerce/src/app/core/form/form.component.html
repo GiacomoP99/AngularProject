@@ -1,0 +1,42 @@
+<div class="container-fluid liquid">
+    <div class="row">
+        <div class="col-3" *ngIf="error_msg != '' && error_msg != 'missing field: '"></div>
+        <div *ngIf="error_msg" class="col-6 text-center text-danger mx-auto">
+            {{error_msg}}
+        </div>
+        <div class="col-3" *ngIf="error_msg"></div>
+        <div class="col-3" *ngIf="too_long"></div>
+        <div *ngIf="too_long" class="col-6 text-center text-danger mx-auto">
+            {{too_long}}
+        </div>
+        <div class="col-3" *ngIf="too_long"></div>
+        <div class="col-6 mx-auto">
+            <form [formGroup]="prodForm" (submit)="sendForm()">
+                <label class="d-inline">Name: </label>
+                <input class="form-control " type="text" formControlName="name">
+                <label class="inline">Category:</label>
+                <select class="form-control" name="category" formControlName="category">
+                    <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.category}}</option>
+                </select>
+
+                <label class="d-inline">Description: </label>
+                <input class="form-control " type="text" formControlName="description">
+                <label class="d-inline">Price: </label>
+                <input class="form-control " type="number" formControlName="price">
+                <div class="row">
+                    <div class="col-6 mx-auto mt-2">
+                        <button type="submit">
+                            <span>
+                                Send
+                            </span>
+                            <div class=" liquid">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

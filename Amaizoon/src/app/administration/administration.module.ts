@@ -6,6 +6,7 @@ import { ProductManagementComponent } from './product-management/product-managem
 import { OrderManagementComponent } from './order-management/order-management.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModelModule } from '../model/model.module';
 
 const childRoot: Routes = [
   {
@@ -41,6 +42,7 @@ const childRoot: Routes = [
     CommonModule,
     RouterModule.forChild(childRoot),
     FormsModule,
+    ModelModule,
     ReactiveFormsModule,
   ],
 })

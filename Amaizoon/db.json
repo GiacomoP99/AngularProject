@@ -43,5 +43,82 @@
       "description": "good laptop"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "cart": {
+        "cart": [
+          {
+            "product": {
+              "id": 1,
+              "name": "iphone 12",
+              "category": "Smartphone",
+              "price": 949.99,
+              "description": "apple device"
+            },
+            "quantity": 1
+          }
+        ],
+        "totalProducts": 1,
+        "totalPrice": 949.99
+      },
+      "id": 1,
+      "name": "aouewfh",
+      "surname": "fewoiuh",
+      "city": "hfefeow",
+      "address": "oewfuih"
+    },
+    {
+      "cart": {
+        "cart": [
+          {
+            "product": {
+              "id": 2,
+              "name": "xiaomi",
+              "category": "Smartphone",
+              "price": 549.99,
+              "description": "average performance smartphone"
+            },
+            "quantity": 1
+          },
+          {
+            "product": {
+              "id": 1,
+              "name": "iphone 12",
+              "category": "Smartphone",
+              "price": 949.99,
+              "description": "apple device"
+            },
+            "quantity": 1
+          },
+          {
+            "product": {
+              "id": 3,
+              "name": "Samsung s12",
+              "category": "Smartphone",
+              "price": 749.99,
+              "description": "shitty smartphone for apple haters"
+            },
+            "quantity": 1
+          },
+          {
+            "product": {
+              "id": 4,
+              "name": "Dishwasher",
+              "category": "Home appliance",
+              "price": 249.99,
+              "description": "excelent dishwasher"
+            },
+            "quantity": 1
+          }
+        ],
+        "totalProducts": 4,
+        "totalPrice": 2499.96
+      },
+      "id": 2,
+      "name": "asf",
+      "surname": "ewgq",
+      "city": "gew",
+      "address": "wge"
+    }
+  ]
 }

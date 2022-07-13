@@ -19,7 +19,7 @@
                         (click)="selectedCategory = ''">All
                         Categories
                     </button>
-                    <button *ngFor="let cat of getCategories()" class="btn btn-block btn-sm btn-outline-primary"
+                    <button *ngFor="let cat of getCategories()" class="btn btn-block btn-sm  btn-outline-primary"
                         (click)="selectedCategory = cat" [class.active]="selectedCategory==cat">{{cat}}
                     </button>
                 </div>

@@ -17,4 +17,12 @@ export class RestDatasourceService {
   saveOrder(order: OrderService): Observable<OrderService> {
     return this.http.post<OrderService>('http://localhost:3000/orders', order);
   }
+
+  getOrders(): Observable<OrderService[]> {
+    return this.http.get<OrderService[]>('http://localhost:3000/orders');
+  }
+
+  removeOrder(id: number): Observable<Object> {
+    return this.http.delete('http://localhost:3000/orders/' + id);
+  }
 }
