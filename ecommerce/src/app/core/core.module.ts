@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     ProductListComponent,
     FormComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
+
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   exports: [HomeComponent, NavbarComponent, FooterComponent],
 })

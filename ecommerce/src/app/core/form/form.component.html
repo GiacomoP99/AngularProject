@@ -16,7 +16,8 @@
                 <input class="form-control " type="text" formControlName="name">
                 <label class="inline">Category:</label>
                 <select class="form-control" name="category" formControlName="category">
-                    <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.category}}</option>
+                    <option *ngFor="let cat of categories" value="{{cat.id}}" [selected]="prod.category == cat.id">
+                        {{cat.category}}</option>
                 </select>
 
                 <label class="d-inline">Description: </label>

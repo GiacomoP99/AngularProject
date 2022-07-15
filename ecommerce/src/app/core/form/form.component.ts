@@ -11,7 +11,7 @@ import { RestDatasourcesService } from 'src/app/rest-datasources.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  prod!: Product;
+  prod: Product = new Product();
   modify = false;
   prodForm: FormGroup;
   categories: Category[] = [];

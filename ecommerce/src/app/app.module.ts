@@ -5,8 +5,11 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { authInterceptorProviders } from './auth.interceptor';
+import { AuthService } from './auth.service';
 import { CoreModule } from './core/core.module';
 import { RestDatasourcesService } from './rest-datasources.service';
+import { TokenStorageService } from './token-storage.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +20,12 @@ import { RestDatasourcesService } from './rest-datasources.service';
     RouterModule,
     HttpClientModule,
   ],
-  providers: [RestDatasourcesService],
+  providers: [
+    RestDatasourcesService,
+    AuthService,
+    TokenStorageService,
+    authInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './core/form/form.component';
 import { HomeComponent } from './core/home/home.component';
+import { LoginComponent } from './core/login/login.component';
 import { MainComponent } from './core/main/main.component';
 import { ProductListComponent } from './core/product-list/product-list.component';
+import { RegisterComponent } from './core/register/register.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'add',
     component: FormComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   { path: '**', redirectTo: '/home' },
 ];

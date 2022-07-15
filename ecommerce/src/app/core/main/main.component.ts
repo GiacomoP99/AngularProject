@@ -8,35 +8,38 @@ import { RestDatasourcesService } from 'src/app/rest-datasources.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-// export class MainComponent implements OnInit {
-//   @Input() products!: Product[];
-
-//   constructor(private repo: RestDatasourcesService) {
-//     this.repo.getProducts(0).subscribe((data) => (this.products = data));
-//   }
-
-//   ngOnInit(): void {}
-
-//   getProducts(): Product[] {
-//     return this.products;
-//   }
-
-//   buy(prod: Product) {
-//     alert('item added to cart , name: ' + prod.name);
-//   }
-// }
 export class MainComponent implements OnInit {
   @Input() products!: Product[];
 
-  constructor(private repo: RestDatasourcesService) {}
+  constructor(private repo: RestDatasourcesService) {
+    this.repo.getProducts(0).subscribe((data) => (this.products = data));
+  }
 
   ngOnInit(): void {}
 
-  getProducts(): Observable<Product[]> {
-    return this.repo.getProducts(0);
+  getProducts(): Product[] {
+    return this.products;
   }
 
   buy(prod: Product) {
     alert('item added to cart , name: ' + prod.name);
   }
 }
+// export class MainComponent implements OnInit {
+//   @Input() products!: Observable<Product[]>;
+
+//   constructor(private repo: RestDatasourcesService) {}
+
+//   ngOnInit(): void {
+//     this.products = this.getProducts();
+//     6;
+//   }
+
+//   getProducts(): Observable<Product[]> {
+//     return this.repo.getProducts(0);
+//   }
+
+//   buy(prod: Product) {
+//     alert('item added to cart , name: ' + prod.name);
+//   }
+// }

@@ -1,0 +1,19 @@
+<div class="row">
+    <div class=" col-6 mx-auto ">
+        <form [formGroup]="regForm" (submit)="sendForm()">
+            <label class="d-inline">Username: </label>
+            <input class="form-control " type="text" formControlName="username">
+            <label class="d-inline">Password: </label>
+            <input class="form-control " type="password" formControlName="password">
+            <label class="d-inline">Email: </label>
+            <input class="form-control " type="email" formControlName="email">
+            <button type="submit">
+                <span>
+                    Send
+                </span>
+                <div class="liquid">
+                </div>
+            </button>
+        </form>
+    </div>
+</div>

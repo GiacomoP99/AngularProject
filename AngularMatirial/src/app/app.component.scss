@@ -1,0 +1,19 @@
+$spacing: 1rem;
+$primary: coral;
+
+.app {
+  padding: $spacing;
+  margin: 1em;
+  padding-right: 16px;
+
+  &-container {
+    background: $primary;
+  }
+  &-sidenav {
+    color: greenyellow;
+  }
+
+  > p {
+    color: red;
+  }
+}
